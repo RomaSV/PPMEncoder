@@ -2,6 +2,8 @@
 
 #define OUTPUT_PIN 10
 
+PPMEncoder<> ppmEncoder{};
+
 void setup() {
   ppmEncoder.begin(OUTPUT_PIN);
 }
@@ -10,11 +12,11 @@ void loop() {
 
   // Min value
   ppmEncoder.setChannel(0, 500);
-  ppmEncoder.setChannel(0, PPMEncoder::MIN);
+  ppmEncoder.setChannel(0, ppmEncoder.minValue);
   ppmEncoder.setChannelPercent(0, 0);
 
   // Max value
   ppmEncoder.setChannel(0, 2500);
-  ppmEncoder.setChannel(0, PPMEncoder::MAX);
+  ppmEncoder.setChannel(0, ppmEncoder.maxValue);
   ppmEncoder.setChannelPercent(0, 100);
 }

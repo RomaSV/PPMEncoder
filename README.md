@@ -13,10 +13,14 @@ Your value range is from 0,5ms to 1.5ms. This results in timer1 overflow values 
 
 ## Setup
 
-By default there are *8 Channels* use can use. You can set this value using the begin-function.
+By default there are *8 Channels* use can use. You can set this value using the template parameter.
 
-```c
-void begin(uint8_t outputPin);
-void begin(uint8_t outputPin, uint8_t numChannels);
+```c++
+PPMEncoder<> ppmEncoder{}; // default 8 channels
+PPMEncoder<4> ppmEncoder{}; // 4 channels
 ```
-For more than 8 channels, the frame length has to increase - which is not configurable yet.
+For more than 8 channels, the frame length has to increase - which you can set manually with the following constructor.
+
+```c++
+PPMEncoder(const uint16_t minValue, const uint16_t maxValue, const uint16_t frameLength, const uint16_t pulseLength)
+```
