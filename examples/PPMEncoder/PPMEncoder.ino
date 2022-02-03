@@ -4,6 +4,10 @@
 
 PPMEncoder<> ppmEncoder{};
 
+ISR(TIMER1_COMPA_vect) {
+    ppmEncoder.interrupt();
+}
+
 void setup() {
   ppmEncoder.begin(OUTPUT_PIN);
 }

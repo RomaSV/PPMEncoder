@@ -13,7 +13,7 @@ Your value range is from 0,5ms to 1.5ms. This results in timer1 overflow values 
 
 ## Setup
 
-By default there are *8 Channels* use can use. You can set this value using the template parameter.
+By default, there are *8 Channels* use can use. You can set this value using the template parameter.
 
 ```c++
 PPMEncoder<> ppmEncoder{}; // default 8 channels
@@ -23,4 +23,11 @@ For more than 8 channels, the frame length has to increase - which you can set m
 
 ```c++
 PPMEncoder(const uint16_t minValue, const uint16_t maxValue, const uint16_t frameLength, const uint16_t pulseLength)
+```
+
+You also need to define the timer ISR function as following:
+```c++
+ISR(TIMER1_COMPA_vect) {
+    ppmEncoder.interrupt();
+}
 ```
